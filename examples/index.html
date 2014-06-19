@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Emberella Component Blueprint</title>
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+  <script type="text/x-handlebars">
+    <div id="content">
+      {{#ella-sample}}
+        <h1>{{view.tests}}</h1>
+        <p>Click Me</p>
+      {{/ella-sample}}
+    </div>
+  </script>
+  <script src="../bower_components/jquery/dist/jquery.js"></script>
+  <script src="../bower_components/handlebars/handlebars.js"></script>
+  <script src="../bower_components/ember/ember.js"></script>
+  <script src="../bower_components/ic-styled/main.js"></script>
+  <!--<script src="../dist/globals/main.js"></script>-->
+  <script src="http://jason:4200/globals/main.js"></script>
+  <script src="http://jason:35729/livereload.js"></script>
+
+  <script>
+    App = Ember.Application.create();
+  </script>
+  </body>
+</html>

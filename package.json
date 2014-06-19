@@ -1,0 +1,45 @@
+{
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt test",
+    "postinstall": "./script/postinstall"
+  },
+  "devDependencies": {
+    "bower": "^1.3.3",
+    "broccoli": "^0.12.0",
+    "broccoli-autoprefixer": "^0.2.0",
+    "broccoli-cli": "0.0.1",
+    "broccoli-coffee": "^0.1.0",
+    "broccoli-csso": "^0.2.0",
+    "broccoli-dist-es6-module": "^0.2.0",
+    "broccoli-ember-hbs-template-compiler": "^1.5.0",
+    "broccoli-env": "0.0.1",
+    "broccoli-file-mover": "^0.3.2",
+    "broccoli-merge-trees": "^0.1.3",
+    "broccoli-sass": "^0.1.4",
+    "broccoli-static-compiler": "^0.1.4",
+    "grunt": "^0.4.5",
+    "grunt-broccoli": "^0.2.2",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-testem": "^0.5.16",
+    "matchdep": "^0.3.0",
+    "qunitjs": "1.12.0",
+    "testem": "^0.6.15"
+  },
+  "name": "button-dropdown",
+  "description": "A bootstrap-ready button dropdown component for EmberJS",
+  "version": "0.0.1",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "keywords": [
+    "ember",
+    "button",
+    "dropdown",
+    "component"
+  ],
+  "author": "Jason Monma",
+  "license": "BSD-2-Clause"
+}
