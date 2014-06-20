@@ -3,14 +3,46 @@
   <head>
     <title>Emberella Component Blueprint</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   </head>
   <body>
   <script type="text/x-handlebars">
     <div id="content">
-      {{#ella-sample}}
-        <h1>{{view.tests}}</h1>
-        <p>Click Me</p>
-      {{/ella-sample}}
+      {{#btn-dropdown}}
+        {{#btn-dropdown-button}}
+          My Button Label
+        {{/btn-dropdown-button}}
+        {{#btn-dropdown-list}}
+          {{#btn-dropdown-item action="option1"}}
+            Option 1
+          {{/btn-dropdown-item}}
+          {{#btn-dropdown-item action="option2"}}
+            Option 2
+          {{/btn-dropdown-item}}
+        {{/btn-dropdown-list}}
+      {{/btn-dropdown}}
+
+      {{#btn-dropdown}}
+        {{#btn-dropdown-button}}
+          Actions
+        {{/btn-dropdown-button}}
+        {{#btn-dropdown-list}}
+          {{#btn-dropdown-item action="save"}}
+            Save
+          {{/btn-dropdown-item}}
+          {{#btn-dropdown-item action="delete"}}
+            Delete
+          {{/btn-dropdown-item}}
+          <li class="divider"></li>
+          {{#btn-dropdown-item action="help"}}
+            Help
+          {{/btn-dropdown-item}}
+        {{/btn-dropdown-list}}
+      {{/btn-dropdown}}
+
+      <select>
+        <option>test dismiss</option>
+      </select>
     </div>
   </script>
   <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -23,6 +55,25 @@
 
   <script>
     App = Ember.Application.create();
+    App.ApplicationController = Ember.Controller.extend({
+      actions: {
+        option1: function () {
+          alert('option1');
+        },
+        option2: function () {
+          alert('option2');
+        },
+        save: function () {
+          alert('saved!');
+        },
+        delete: function () {
+          alert('deleted!');
+        },
+        help: function () {
+          alert('help!');
+        }
+      }
+    });
   </script>
   </body>
 </html>

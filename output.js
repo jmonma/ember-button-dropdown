@@ -1,5 +1,5 @@
 // Replace with your own global namespace.
-var MY_JS_GLOBAL_NAMESPACE = 'ButtonDropdownComponent';
+var MY_JS_GLOBAL_NAMESPACE = 'WD';
 
 // Replace with your own package name.
 var MY_JS_PACKAGE_NAME = 'button-dropdown';

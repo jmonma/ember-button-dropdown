@@ -11,7 +11,10 @@ App.injectTestHelpers();
 
 setResolver(Ember.DefaultResolver.extend({
   testSubjects: {
-    'component:ella-sample': NAMESPACE.EllaSampleComponent
+    'component:btn-dropdown-button': NAMESPACE.ButtonComponent,
+    'component:btn-dropdown-list': NAMESPACE.ListComponent,
+    'component:btn-dropdown-item': NAMESPACE.ListItemComponent,
+    'component:btn-dropdown': NAMESPACE.ButtonDropdownComponent
   },
   resolve: function(fullName) {
     return this.testSubjects[fullName] || this._super.apply(this, arguments);
