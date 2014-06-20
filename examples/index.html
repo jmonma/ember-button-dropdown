@@ -9,34 +9,20 @@
   <script type="text/x-handlebars">
     <div id="content">
       {{#btn-dropdown}}
-        {{#btn-dropdown-button}}
-          My Button Label
-        {{/btn-dropdown-button}}
+        {{#btn-dropdown-button}}My Button Label{{/btn-dropdown-button}}
         {{#btn-dropdown-list}}
-          {{#btn-dropdown-item action="option1"}}
-            Option 1
-          {{/btn-dropdown-item}}
-          {{#btn-dropdown-item action="option2"}}
-            Option 2
-          {{/btn-dropdown-item}}
+          {{#btn-dropdown-item action="option1"}}Option 1{{/btn-dropdown-item}}
+          {{#btn-dropdown-item action="option2"}}Option 2{{/btn-dropdown-item}}
         {{/btn-dropdown-list}}
       {{/btn-dropdown}}
 
       {{#btn-dropdown}}
-        {{#btn-dropdown-button}}
-          Actions
-        {{/btn-dropdown-button}}
+        {{#btn-dropdown-button}}Actions{{/btn-dropdown-button}}
         {{#btn-dropdown-list}}
-          {{#btn-dropdown-item action="save"}}
-            Save
-          {{/btn-dropdown-item}}
-          {{#btn-dropdown-item action="delete"}}
-            Delete
-          {{/btn-dropdown-item}}
-          <li class="divider"></li>
-          {{#btn-dropdown-item action="help"}}
-            Help
-          {{/btn-dropdown-item}}
+          {{#btn-dropdown-item action="save"}}Save{{/btn-dropdown-item}}
+          {{#btn-dropdown-item action="delete"}}Delete{{/btn-dropdown-item}}
+          {{btn-dropdown-item divider=true}}
+          {{#btn-dropdown-item action="help"}}Help{{/btn-dropdown-item}}
         {{/btn-dropdown-list}}
       {{/btn-dropdown}}
 
