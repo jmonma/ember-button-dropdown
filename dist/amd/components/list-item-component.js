@@ -42,6 +42,14 @@ define(
       attributeBindings: ['ariaDisabled:aria-disabled', 'role'],
 
       /**
+        Bound class names on the container.
+
+        @property classNameBindings
+        @type Array
+      */
+      classNameBindings: ['divider'],
+
+      /**
         Flag for whether or not the menu item is disabled.
 
         @property disabled
@@ -49,6 +57,15 @@ define(
         @default false
       */
       disabled: false,
+
+      /**
+        Flag for whether or not the menu item is a simple divider.
+
+        @property disabled
+        @type Boolean
+        @default false
+      */
+      divider: false,
 
       /**
         Accessibility attribute for whether or not the list is disabled,
@@ -59,8 +76,8 @@ define(
         @default parentView.isOpen
       */
       ariaDisabled: function() {
-        return !!this.get('disabled')+'';
-      }.property('disabled'),
+        return (this.get('disabled') || this.get('divider'))+'';
+      }.property('disabled', 'divider'),
 
       /**
         Accessibility attribute for the role.
@@ -69,10 +86,15 @@ define(
         @type String
         @default 'menuitem'
       */
-      role: 'menuitem',
+      role: function () {
+        if (!this.get('divider')) {
+          return 'menuitem';
+        }
+        return;
+      }.property('divider'),
 
       click: function (e) {
-        if (this.get('disabled')) {
+        if (this.get('disabled') || this.get('divider')) {
           return;
         }
 
@@ -87,7 +109,7 @@ define(
         }
       },
 
-      layout: Handlebars.compile('<a href="#">{{ yield }}</a>')
+      layout: Handlebars.compile('{{#unless divider}}<a href="#">{{ yield }}</a>{{/unless}}')
     };
 
     __exports__["default"] = Component.extend(ListItemComponent);

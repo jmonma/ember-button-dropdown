@@ -218,8 +218,7 @@ ButtonDropdownComponent = {
   */
   bindEventHandlers: function () {
     if (!this.get('isOpen')) {
-      $(document).off('keydown.btn-dropdown');
-      return $(document).off('click.btn-dropdown');
+      return this.unbindEventHandlers();
     }
 
     Ember.run.next(this, function () {
@@ -227,11 +226,20 @@ ButtonDropdownComponent = {
         $(document).on('click.btn-dropdown', $.proxy(this.handleOuterClick, this));
         $(document).on('keydown.btn-dropdown', $.proxy(this.handleKeyDown, this));
       } else {
-        $(document).off('click.btn-dropdown');
-        $(document).off('keydown.btn-dropdown');
+        this.unbindEventHandlers();
       }
     });
-  }.observes('isOpen')
+  }.observes('isOpen'),
+
+  /**
+    Removes event handlers. Automatically runs if the element is destroyed.
+
+    @method unbindEventHandlers
+  */
+  unbindEventHandlers: function () {
+    $(document).off('keydown.btn-dropdown');
+    $(document).off('click.btn-dropdown');
+  }.on('willDestroyElement')
 };
 
 exports["default"] = Component.extend(ButtonDropdownComponent);
@@ -348,6 +356,14 @@ ListItemComponent = {
   attributeBindings: ['ariaDisabled:aria-disabled', 'role'],
 
   /**
+    Bound class names on the container.
+
+    @property classNameBindings
+    @type Array
+  */
+  classNameBindings: ['divider'],
+
+  /**
     Flag for whether or not the menu item is disabled.
 
     @property disabled
@@ -355,6 +371,15 @@ ListItemComponent = {
     @default false
   */
   disabled: false,
+
+  /**
+    Flag for whether or not the menu item is a simple divider.
+
+    @property disabled
+    @type Boolean
+    @default false
+  */
+  divider: false,
 
   /**
     Accessibility attribute for whether or not the list is disabled,
@@ -365,8 +390,8 @@ ListItemComponent = {
     @default parentView.isOpen
   */
   ariaDisabled: function() {
-    return !!this.get('disabled')+'';
-  }.property('disabled'),
+    return (this.get('disabled') || this.get('divider'))+'';
+  }.property('disabled', 'divider'),
 
   /**
     Accessibility attribute for the role.
@@ -375,10 +400,15 @@ ListItemComponent = {
     @type String
     @default 'menuitem'
   */
-  role: 'menuitem',
+  role: function () {
+    if (!this.get('divider')) {
+      return 'menuitem';
+    }
+    return;
+  }.property('divider'),
 
   click: function (e) {
-    if (this.get('disabled')) {
+    if (this.get('disabled') || this.get('divider')) {
       return;
     }
 
@@ -393,7 +423,7 @@ ListItemComponent = {
     }
   },
 
-  layout: Handlebars.compile('<a href="#">{{ yield }}</a>')
+  layout: Handlebars.compile('{{#unless divider}}<a href="#">{{ yield }}</a>{{/unless}}')
 };
 
 exports["default"] = Component.extend(ListItemComponent);
